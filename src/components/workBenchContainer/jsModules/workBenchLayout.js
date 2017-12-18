@@ -3,7 +3,7 @@ import tile from '../styles/imgs/paint2.jpg';
 
 const buildTableComponent = function(cbReturn) {
     $(function() {
-        $('.contentContainer').append('<div class="appContainer" id="bddAppContainer"></div>');
+        $('.contentContainer').append('<div class="appContainer" id="appContainer"></div>');
         document.getElementById('allContentDiv').onscroll = function(e) {
             const viewPort = document.getElementById('contentContainer').getBoundingClientRect();
             if (viewPort.top < 140) {
@@ -21,7 +21,7 @@ const buildTableComponent = function(cbReturn) {
             const backgroundImg = document.getElementById('backgroundImg');
             backgroundImg.src = tile;
         }
-        cbReturn('bddAppContainer');
+        cbReturn('appContainer');
     });
 };
 
