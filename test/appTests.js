@@ -47,7 +47,7 @@ describe('THE COMPONENTS', () => {
         it('should return a div with the class tableRow', () => {
             expect(testMethods.tableRow.call(testData.tableRow.cells)).to.contain('<div class="tableRow"');
         });
-        it('should return the number of rows present in the cells object (' + testData.tableRow.cells.length + ')', () => {
+        it('should return the number of rows present in the cells object ', () => {
             Object.keys(testData.tableRow.cells).map(element => {
                 expect(testMethods.tableRow.call(testData.tableRow.cells)).to.contain(testData.tableRow.cells[element]);
             });
