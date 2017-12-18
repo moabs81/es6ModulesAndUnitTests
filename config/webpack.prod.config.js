@@ -1,48 +1,67 @@
 var path = require('path');
 var webpack = require('webpack');
 var htmlWebpackPlugin = require('html-webpack-plugin');
+const myConfig = require('./moreConfig');
 
 module.exports = {
     devtool: 'source-map',
-    entry: './index.js',
+    entry: myConfig.buildPath('src/app.js'),
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: myConfig.buildPath('dist/'),
         filename: 'devBundle.js'
     },
     module: {
         rules: [{
+                enforce: 'pre',
                 test: /\.js$/,
-                use: {
-                    loader: 'babel-loader'
-                }
-            },
-            /*{
-                test: /\.es6$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015']
-                }
-            },*/
-            {
-                test: /\.(jpg|jpeg|png|svg)$/,
-                use: {
-                    loader: 'file-loader'
+                loader: require.resolve('eslint-loader'),
+                options: {
+                    eslintPath: require.resolve('eslint'),
+                    configFile: myConfig.buildPath('config/.eslintrc')
                 }
             },
             {
-                test: /\.less$/,
-                use: [{
-                    loader: 'style-loader'
-                }, {
-                    loader: 'css-loader'
-                }, {
-                    loader: 'less-loader',
-                    options: {
-                        strictMath: true,
-                        noIeCompat: true
+                oneOf: [{
+                        test: /\.(jpg|jpeg|png|svg)$/,
+                        exclude: /node_modules/,
+                        loader: require.resolve('url-loader'),
+                        options: {
+                            limit: 8000,
+                            name: '[name]-[hash:6].[ext]'
+                        }
+                    },
+                    {
+                        test: /\.js$/,
+                        exclude: /node_modules/,
+                        loader: require.resolve('babel-loader')
+                            /*options: {
+                                presets: ['env']
+                            }*/
+                    },
+                    {
+                        test: /\.less$/,
+                        exclude: /node_modules/,
+                        use: [{
+                            loader: require.resolve('style-loader')
+                        }, {
+                            loader: require.resolve('css-loader')
+                        }, {
+                            loader: require.resolve('less-loader'),
+                            options: {
+                                strictMath: true,
+                                noIeCompat: true
+                            }
+                        }]
+                    },
+                    {
+                        exclude: [/\.js$/, /\.html$/, /\.json$/],
+                        loader: require.resolve('file-loader'),
+                        options: {
+                            name: 'media/[name]-[hash:6].[ext]'
+                        }
                     }
-                }]
+                ]
             }
         ]
     },
@@ -56,7 +75,7 @@ module.exports = {
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new htmlWebpackPlugin({
-            template: './src/index.html'
+            template: myConfig.buildPath('src/index.html')
         }),
         new webpack.ProvidePlugin({
             'window.jQuery': 'jQuery',
