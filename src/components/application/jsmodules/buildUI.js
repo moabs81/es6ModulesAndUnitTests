@@ -22,14 +22,32 @@ const headerRow = function() {
     return returnHTML.join('');
 };
 
+const searchContainer = function() {
+    const returnHTML = [];
+    returnHTML.push('<div class="searchContainer">');
+    returnHTML.push('<div class="searchForm">');
+    returnHTML.push('<input id="searchInput" type="search">');
+    returnHTML.push('<button id="searchButton">Search</button>');
+    returnHTML.push('</div>');
+    returnHTML.push('</div>');
+    return returnHTML.join('');
+};
+
 const tableContainer = function() {
     const returnHTML = [];
-    returnHTML.push('<div class="tableContainer">');
-    returnHTML.push(headerRow.call(Object.keys(this[0])));
+    if (document.getElementsByClassName('tableContainer').length == 0) {
+        returnHTML.push('<div class="tableContainer">');
+        returnHTML.push(headerRow.call(Object.keys(this[0])));
+        returnHTML.push('<div class="tableRowsContainer">');
+    };
     Object.keys(this).map(element => {
         returnHTML.push(tableRow.call(this[element]));
     });
-    returnHTML.push('</div>');
+    if (document.getElementsByClassName('tableContainer').length == 0) {
+        returnHTML.push('</div>');
+        returnHTML.push('</div>');
+        returnHTML.push(searchContainer());
+    };
     return returnHTML.join('');
 };
 
@@ -37,7 +55,8 @@ const testMethods = {
     tableCell: tableCell,
     tableRow: tableRow,
     headerRow: headerRow,
+    searchContainer: searchContainer,
     tableContainer: tableContainer
 };
 
-export { tableContainer, testMethods };
+export { tableContainer, tableRow, testMethods };

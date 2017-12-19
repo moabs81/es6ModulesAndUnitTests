@@ -1,4 +1,4 @@
-import { tableContainer } from './buildUI';
+import { tableContainer, tableRow } from './buildUI';
 
 const sortTable = function() {
     const arrSort = this.state;
@@ -39,8 +39,10 @@ const appController = function() {
     const bindEvents = function() {
         document.getElementById('appContainer').addEventListener('click', e => {
             if (e.srcElement.getAttribute('class') == 'headerCell') {
+                console.log(e);
+                console.log(e.path[1].getAttribute('class'));
                 const newState = sortTable.call({ state: appState, sortCol: e.srcElement.textContent, sortOrder: 'asc' });
-                $(targetDiv).html(tableContainer.call(newState));
+                $('.tableRowsContainer').html(tableContainer.call(newState));
             };
         });
     };

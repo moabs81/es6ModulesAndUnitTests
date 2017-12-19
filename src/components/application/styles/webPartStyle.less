@@ -26,27 +26,47 @@
 
 /**********************NESTED STYLES*****************************/
 
-.tableContainer {
-    display: table;
-    width: 50%;
-    background-color: @background-color;
-    text-align: center;
-    cursor: default;
-    .headerRow {
-        #tableRows;
-        .headerCell {
-            #tableCells;
-            font-weight: bold;
+.appContainer {
+    display: flex;
+    .tableContainer {
+        width: 50%;
+        background-color: @background-color;
+        text-align: center;
+        cursor: default;
+        .headerRow {
+            #tableRows;
+            .headerCell {
+                #tableCells;
+                font-weight: bold;
+            }
+        }
+        .tableRowsContainer {
+            display: table;
+            .tableRow {
+                #tableRows;
+                #onHoverBefore;
+                .tableCell {
+                    #tableCells;
+                }
+            }
+            .tableRow:hover {
+                #onHoverAfter;
+            }
         }
     }
-    .tableRow {
-        #tableRows;
-        #onHoverBefore;
-        .tableCell {
-            #tableCells;
+    .searchContainer {
+        width: 50%;
+        .searchForm {
+            padding: 50px;
+            #searchInput {
+                padding: 5px;
+            }
+            #searchButton {
+                background-color: rgb(46, 135, 203);
+                border: none;
+                padding: 5px;
+                color: #ffffff;
+            }
         }
-    }
-    .tableRow:hover {
-        #onHoverAfter;
     }
 }
