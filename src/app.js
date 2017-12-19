@@ -1,11 +1,7 @@
-import {
-    buildTableComponent
-} from './components/workBenchContainer/jsModules/workBenchLayout';
+import { buildTableComponent } from './components/workBenchContainer/jsModules/workBenchLayout';
 
-import {
-    WebPart
-} from './components/application/app';
+import { WebPart } from './components/application/app';
 
-buildTableComponent(function (result) {
+buildTableComponent(function(result) {
     WebPart.call('#' + result);
 });

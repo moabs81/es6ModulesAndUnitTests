@@ -3,9 +3,7 @@
 const expect = require('chai').expect;
 
 //import test module
-import {
-    testMethods
-} from '../src/components/application/jsmodules/buildUI';
+import { testMethods } from '../src/components/application/jsmodules/buildUI';
 
 //set test data
 const testData = {
@@ -17,6 +15,9 @@ const testData = {
             key1: 'value1',
             key2: 'value2'
         }
+    },
+    headerRow: {
+        headerRow: ['key1', 'key2']
     },
     tableContainer: {
         testObj: [{
@@ -55,11 +56,27 @@ describe('THE COMPONENTS', () => {
             });
         });
     });
+    describe('THE HEADER', () => {
+        it('should return a string', () => {
+            expect(testMethods.headerRow.call(testData.headerRow.headerRow)).to.be.a('string');
+        });
+        it('should return a div with the class headerRow', () => {
+            expect(testMethods.headerRow.call(testData.headerRow.headerRow)).to.contain('<div class="headerRow"');
+        });
+        it('should return divs with the class headerCell', () => {
+            expect(testMethods.headerRow.call(testData.headerRow.headerRow)).to.contain('<div class="headerCell"');
+        });
+        it('should return the data passed to it', () => {
+            testData.headerRow.headerRow.forEach(element => {
+                expect(testMethods.headerRow.call(testData.headerRow.headerRow)).to.contain(element);
+            });
+        });
+    });
     describe('THE CONTAINER', () => {
         it('should return a string', () => {
             expect(testMethods.tableContainer.call(testData.tableContainer.testObj)).to.be.a('string');
         });
-        it('a div with the class tableContainer', () => {
+        it('should return a div with the class tableContainer', () => {
             expect(testMethods.tableContainer.call(testData.tableContainer.testObj)).to.contain('<div class="tableContainer"');
         });
         it('should return the number of rows present in the test object (' + testData.tableContainer.testObj.length + ')', () => {

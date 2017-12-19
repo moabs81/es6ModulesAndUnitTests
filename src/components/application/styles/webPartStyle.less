@@ -1,15 +1,52 @@
+/**********************variables**************************/
+
+@background-color: rgba(255, 255, 255, 0.7);
+
+/**********************Mixins*****************************/
+
+#tableRows() {
+    display: table-row;
+}
+
+#tableCells() {
+    display: table-cell;
+    width: 15%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#onHoverBefore() {
+    transition: background-color 0.3s ease;
+}
+
+#onHoverAfter() {
+    background-color: rgba(255, 255, 255, 1.0);
+}
+
+
+/**********************NESTED STYLES*****************************/
+
 .tableContainer {
     display: table;
-    width: 100%;
+    width: 50%;
+    background-color: @background-color;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.7);
-    .tableRow {
-        display: table-row;
-        .tableCell {
-            display: table-cell;
-            width: 15%;
-            padding-top: 10px;
-            padding-bottom: 10px;
+    cursor: default;
+    .headerRow {
+        #tableRows;
+        .headerCell {
+            #tableCells;
+            font-weight: bold;
         }
+    }
+    .tableRow {
+        #tableRows;
+        #onHoverBefore;
+        .tableCell {
+            #tableCells;
+        }
+    }
+    .tableRow:hover {
+        #onHoverAfter;
     }
 }
