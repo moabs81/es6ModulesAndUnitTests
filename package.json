@@ -7,7 +7,8 @@
         "API": "json-server --watch ./fakeRestApi/db.json",
         "test": "mocha --compilers js:babel-core/register",
         "cleanDist": "rm -rf dist/*",
-        "build": "webpack --config ./config/webpack.prod.config.js"
+        "build": "webpack --config ./config/webpack.prod.config.js",
+        "serve": "json-server --watch ./fakeRestApi/db.json --static ./dist --port 5000"
     },
     "author": "Nick",
     "license": "ISC",

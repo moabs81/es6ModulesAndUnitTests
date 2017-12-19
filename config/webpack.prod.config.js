@@ -35,9 +35,9 @@ module.exports = {
                         test: /\.js$/,
                         exclude: /node_modules/,
                         loader: require.resolve('babel-loader')
-                            /*options: {
-                                presets: ['env']
-                            }*/
+                        /*options: {
+                            presets: ['env']
+                        }*/
                     },
                     {
                         test: /\.less$/,

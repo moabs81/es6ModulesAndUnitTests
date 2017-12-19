@@ -3,7 +3,9 @@
 const expect = require('chai').expect;
 
 //import test module
-import { testMethods } from '../src/components/application/jsmodules/buildUI';
+import {
+    testMethods
+} from '../src/components/application/jsmodules/buildUI';
 
 //set test data
 const testData = {
@@ -47,7 +49,7 @@ describe('THE COMPONENTS', () => {
         it('should return a div with the class tableRow', () => {
             expect(testMethods.tableRow.call(testData.tableRow.cells)).to.contain('<div class="tableRow"');
         });
-        it('should return the number of rows present in the cells object ', () => {
+        it('should return the number of rows present in the cells object (2)', () => {
             Object.keys(testData.tableRow.cells).map(element => {
                 expect(testMethods.tableRow.call(testData.tableRow.cells)).to.contain(testData.tableRow.cells[element]);
             });
@@ -65,7 +67,6 @@ describe('THE COMPONENTS', () => {
                 Object.keys(testData.tableContainer.testObj[element]).map(subElement => {
                     expect(testMethods.tableContainer.call(testData.tableContainer.testObj)).to.contain(testData.tableContainer.testObj[element][subElement]);
                 });
-
             });
         });
     });
