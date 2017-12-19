@@ -57,6 +57,6 @@ const testMethods = {
     headerRow: headerRow,
     searchContainer: searchContainer,
     tableContainer: tableContainer
-};
+}; //remove
 
 export { tableContainer, tableRow, testMethods };

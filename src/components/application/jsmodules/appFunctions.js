@@ -53,6 +53,6 @@ const appController = function() {
 
 const testMethods = {
     sortTable: sortTable
-};
+}; //remove
 
 export { appController, testMethods };
