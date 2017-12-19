@@ -1,5 +1,3 @@
-'use strict';
-
 import {
     apiCall
 } from './jsmodules/ajaxCall';
@@ -10,7 +8,8 @@ require('./styles/webPartStyle.less');
 
 const buildAjaxCall = function (cbReturn) {
     const buildAPIReq = {
-        baseURI: 'http://localhost:3000',
+        baseURI: 'https://my-json-server.typicode.com/moabs81/fakeJSONServer',
+        //baseURI: 'http://localhost:3000',
         searchURI: '/offices',
         method: 'GET',
         success: function (result) {
@@ -25,6 +24,7 @@ const WebPart = function () {
     let tableObject;
     buildAjaxCall(function (result) {
         tableObject = JSON.parse(result);
+        console.log(tableObject);
         $(targetDiv).append(tableContainer.call(tableObject));
     });
 };

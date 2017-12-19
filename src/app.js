@@ -1,4 +1,3 @@
-'use strict';
 import {
     buildTableComponent
 } from './components/workBenchContainer/jsModules/workBenchLayout';

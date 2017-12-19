@@ -1,5 +1,3 @@
-'use strict';
-
 const tableCell = function () {
     return '<div class="tableCell">' + this + '</div>';
 };

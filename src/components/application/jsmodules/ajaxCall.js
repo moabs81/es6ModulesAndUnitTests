@@ -1,6 +1,4 @@
-'use strict';
-
-const apiCall = function() {
+const apiCall = function () {
     const getData = new XMLHttpRequest();
     if (this.progress) {
         getData.addEventListener('progress', this.progress);
@@ -15,4 +13,6 @@ const apiCall = function() {
     getData.send();
 };
 
-export { apiCall };
+export {
+    apiCall
+};
