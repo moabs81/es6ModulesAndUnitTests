@@ -1,10 +1,10 @@
 'use strict';
 
-const tableCell = function() {
+const tableCell = function () {
     return '<div class="tableCell">' + this + '</div>';
 };
 
-const tableRow = function() {
+const tableRow = function () {
     let returnHTML = [];
     returnHTML.push('<div class="tableRow">');
     Object.keys(this).map(element => {
@@ -14,7 +14,7 @@ const tableRow = function() {
     return returnHTML.join('');
 };
 
-const tableContainer = function() {
+const tableContainer = function () {
     let returnHTML = [];
     returnHTML.push('<div class="tableContainer">');
     Object.keys(this).map(element => {
@@ -30,4 +30,7 @@ const testMethods = {
     tableContainer: tableContainer
 };
 
-export { tableContainer, testMethods };
+export {
+    tableContainer,
+    testMethods
+};
