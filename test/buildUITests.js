@@ -1,4 +1,3 @@
-'use strict';
 //require chai
 const expect = require('chai').expect;
 

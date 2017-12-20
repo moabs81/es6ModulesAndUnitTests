@@ -1,5 +1,7 @@
 require('../styles/pageLayout.less');
-import tile from '../styles/imgs/paint2.jpg';
+//import tile from '../styles/imgs/paint2.jpg';
+import tile from '../styles/imgs/chalkboard.jpeg';
+
 
 const buildTableComponent = function(cbReturn) {
     $(function() {
